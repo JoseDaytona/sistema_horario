@@ -5,7 +5,9 @@ USE ReservacionLaboratorios;
 CREATE TABLE Campus (
     CampusID INT AUTO_INCREMENT PRIMARY KEY,
     Descripcion VARCHAR(255) NOT NULL,
-    Estado ENUM('Activo', 'Inactivo') NOT NULL
+    Estado ENUM('Activo', 'Inactivo') NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
 -- Tabla para los Edificios
@@ -14,6 +16,8 @@ CREATE TABLE Edificios (
     Descripcion VARCHAR(255) NOT NULL,
     CampusID INT,
     Estado ENUM('Activo', 'Inactivo') NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     FOREIGN KEY (CampusID) REFERENCES Campus(CampusID)
 );
 
@@ -21,7 +25,9 @@ CREATE TABLE Edificios (
 CREATE TABLE TiposDeAulas (
     TipoAulaID INT AUTO_INCREMENT PRIMARY KEY,
     Descripcion VARCHAR(255) NOT NULL,
-    Estado ENUM('Activo', 'Inactivo') NOT NULL
+    Estado ENUM('Activo', 'Inactivo') NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
 -- Tabla para las Aulas / Laboratorios
@@ -33,6 +39,8 @@ CREATE TABLE Aulas (
     Capacidad INT NOT NULL,
     CuposReservados INT DEFAULT 0,
     Estado ENUM('Activo', 'Inactivo') NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     FOREIGN KEY (TipoAulaID) REFERENCES TiposDeAulas(TipoAulaID),
     FOREIGN KEY (EdificioID) REFERENCES Edificios(EdificioID)
 );
@@ -45,6 +53,8 @@ CREATE TABLE Usuarios (
     Clave varchar(500) NOT NULL,
     Estado ENUM('Activo', 'Inactivo') NOT NULL,
     EmpleadoID INT NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     FOREIGN KEY (EmpleadoID) REFERENCES Empleados(EmpleadoID)
 );
 
@@ -58,6 +68,8 @@ CREATE TABLE Empleados (
     CorreoElectronico VARCHAR(11) UNIQUE NOT NULL,
     NoCarnet VARCHAR(20) UNIQUE NOT NULL,
     Estado ENUM('Activo', 'Inactivo') NOT NULL
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
 -- Tabla para la Reservación de Horas
@@ -70,6 +82,8 @@ CREATE TABLE Reservaciones (
     CantidadHoras INT NOT NULL,
     Comentario TEXT,
     Estado ENUM('Pendiente', 'Confirmada', 'Cancelada') NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     FOREIGN KEY (EmpleadoID) REFERENCES Empleados(EmpleadoID),
     FOREIGN KEY (AulaID) REFERENCES Aulas(AulaID),
     FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID)
