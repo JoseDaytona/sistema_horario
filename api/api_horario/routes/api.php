@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('auth/login', 'AuthController@Login')->name('auth/login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    
+
     //Consultas Generales
-    Route::get('consulta/get_tipo_aulas', 'ConsultaController@get_tipo_aulas')->name('consulta/get_tipo_aulas');
-    Route::get('consulta/get_tipo_estado', 'ConsultaController@get_tipo_estado')->name('consulta/get_tipo_estado');
-    Route::get('consulta/get_tipo_estado_reservacion', 'ConsultaController@get_tipo_estado_reservacion')->name('consulta/get_tipo_estado_reservacion');
-    Route::get('consulta/get_tipo_usuario', 'ConsultaController@get_tipo_usuario')->name('consulta/get_tipo_usuario');
-    Route::get('consulta/get_tanda_labor', 'ConsultaController@get_tanda_labor')->name('consulta/get_tanda_labor');
+    Route::get('consulta/tipo_aulas', 'ConsultaController@get_tipo_aulas')->name('consulta/tipo_aulas');
+    Route::get('consulta/tipo_estado', 'ConsultaController@get_tipo_estado')->name('consulta/tipo_estado');
+    Route::get('consulta/tipo_estado_reservacion', 'ConsultaController@get_tipo_estado_reservacion')->name('consulta/tipo_estado_reservacion');
+    Route::get('consulta/tipo_usuario', 'ConsultaController@get_tipo_usuario')->name('consulta/tipo_usuario');
+    Route::get('consulta/tanda_labor', 'ConsultaController@get_tanda_labor')->name('consulta/tanda_labor');
 
     //Aulas
     Route::get('aula/get_all', 'AulasController@get_all_aulas')->name('aula/get_all');
@@ -54,11 +54,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('empleado/destroy', 'EmpleadoController@destroy_empleado')->name('empleado/destroy');
 
     //Reservaciones
-    Route::get('reservaciones/get_all', 'ReservacionesController@get_all_reservaciones')->name('reservaciones/get_all');
-    Route::get('reservaciones/get/{id}', 'ReservacionesController@get_reservacion')->name('reservaciones/get');
-    Route::post('reservaciones/store', 'ReservacionesController@store_reservacion')->name('reservaciones/store');
-    Route::post('reservaciones/update', 'ReservacionesController@update_reservacion')->name('reservaciones/update');
-    Route::post('reservaciones/destroy', 'ReservacionesController@destroy_reservacion')->name('reservaciones/destroy');
+    Route::get('reservacion/get_all', 'ReservacionesController@get_all_reservaciones')->name('reservacion/get_all');
+    Route::get('reservacion/get/{id}', 'ReservacionesController@get_reservacion')->name('reservacion/get');
+    Route::post('reservacion/store', 'ReservacionesController@store_reservacion')->name('reservacion/store');
+    Route::post('reservacion/update', 'ReservacionesController@update_reservacion')->name('reservacion/update');
+    Route::post('reservacion/destroy', 'ReservacionesController@destroy_reservacion')->name('reservacion/destroy');
 
     //Usuarios
     Route::get('usuario/get_all', 'UsuarioController@get_all_usuarios')->name('usuario/get_all');
