@@ -144,7 +144,7 @@ class UsuarioController extends Controller
         try {
             $IdUsuario = $request->get("id_usuario");
             
-            $Clave = Hash::make($request->get("Clave"));
+            $Clave = Hash::make($request->get("clave"));
 
             $registro = Usuarios::updateOrCreate([
                 'UsuarioID' => $IdUsuario,
