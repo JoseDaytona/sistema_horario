@@ -72,7 +72,7 @@ class UsuarioController extends Controller
             $tipoUsuario = $request->get("tipoUsuario");
             $estado = $request->get("estado");
             $Clave = Hash::make($request->get("Clave"));
-            $CodEmpleado = $request->get("empleadoId");
+            $CodEmpleado = $request->get("id_empleado");
             
             $registro = new Usuarios([
                 'Usuario' => $usuario,
