@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('auth/login', 'AuthController@Login')->name('auth/login');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    
+    //Consultas Generales
+    Route::get('consulta/get_tipo_aulas', 'ConsultaController@get_tipo_aulas')->name('consulta/get_tipo_aulas');
+    Route::get('consulta/get_tipo_estado', 'ConsultaController@get_tipo_estado')->name('consulta/get_tipo_estado');
+    Route::get('consulta/get_tipo_estado_reservacion', 'ConsultaController@get_tipo_estado_reservacion')->name('consulta/get_tipo_estado_reservacion');
+    Route::get('consulta/get_tipo_usuario', 'ConsultaController@get_tipo_usuario')->name('consulta/get_tipo_usuario');
+    Route::get('consulta/get_tanda_labor', 'ConsultaController@get_tanda_labor')->name('consulta/get_tanda_labor');
 
     //Aulas
     Route::get('aula/get_all', 'AulasController@get_all_aulas')->name('aula/get_all');
