@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('auth/login', 'AuthController@Login')->name('auth/login');
 Route::post('login', 'AuthController@Login')->name('login');
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+//Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //Consultas Generales
     Route::get('consulta/tipo_aulas', 'ConsultaController@get_tipo_aulas')->name('consulta/tipo_aulas');
@@ -68,4 +68,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('usuario/update', 'UsuarioController@update_usuario')->name('usuario/update');
     Route::post('usuario/update_password', 'UsuarioController@update_password_usuario')->name('usuario/update_password');
     Route::post('usuario/destroy', 'UsuarioController@destroy_usuario')->name('usuario/destroy');
-});
+//});
